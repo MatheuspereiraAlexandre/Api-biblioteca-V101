@@ -21,9 +21,6 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false }
 }))
-
-
-
 // Configuração da conexão usando variáveis de ambiente
 const mysqli = mysql2.createConnection({
     host: process.env.MYSQL_HOST || 'autorack.proxy.rlwy.net', // Use o host público
