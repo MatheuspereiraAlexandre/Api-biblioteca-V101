@@ -22,13 +22,26 @@ app.use(session({
   cookie: { secure: false }
 }))
 
+
+
+// Configuração da conexão usando variáveis de ambiente
 const mysqli = mysql2.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    port: process.env.MYSQL_PORT || 52578 
+    host: process.env.MYSQL_HOST || 'autorack.proxy.rlwy.net', // Use o host público
+    user: process.env.MYSQL_USER || 'root',                  // Nome de usuário
+    password: process.env.MYSQL_PASSWORD || 'bOFQusubmqGomYrgpFNOdjjoWtoLIoGW', // Senha
+    database: process.env.MYSQL_DATABASE || 'railway',       // Nome do banco de dados
+    port: process.env.MYSQL_PORT || 52578                     // Porta do banco de dados
 });
+
+// Testando a conexão
+connection.connect(err => {
+    if (err) {
+        console.error('Erro ao conectar ao MySQL:', err.stack);
+        return;
+    }
+    console.log('Conectado ao MySQL como ID ' + connection.threadId);
+});
+
 
 app.post('/cadastro', (req, res) => {
     const { nome, email, senha } = req.body;
