@@ -58,7 +58,7 @@ app.post('/cadastro', (req, res) => {
                         console.log("deu erro ao tentar fazer a insercao", err);
                     }
                     console.log("inserido com sucesso");
-                    res.redirect('http://127.0.0.1:5500/SITE/Library_Login/login.html')
+                    res.redirect('/SITE/Library_Login/login.html')
                 })
             }
         })
@@ -87,7 +87,7 @@ app.post('/login', (req, res) => {
                 res.send(`
                     <script>
                         alert("Email ou senha incorretos");
-                        window.location.href = "http://127.0.0.1:5500/SITE/Library_Login/login.html"; // Redireciona de volta para a página de login, se necessário
+                        window.location.href = "/SITE/Library_Login/login.html"; // Redireciona de volta para a página de login, se necessário
                     </script>
                 `);
             }
@@ -141,7 +141,7 @@ app.get('/books', (req, res) => {
 });
 
 app.get('/main', (req, res) => {
-    res.redirect('http://127.0.0.1:5500/SITE/Library_Collection/')
+    res.redirect('/SITE/Library_Collection/')
 })
 
 app.get('/user', (req, res) => {
