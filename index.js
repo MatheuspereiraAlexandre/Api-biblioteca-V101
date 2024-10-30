@@ -23,20 +23,20 @@ app.use(session({
 }))
 // Configuração da conexão usando variáveis de ambiente
 const mysqli = mysql2.createConnection({
-    host: process.env.MYSQL_HOST || 'autorack.proxy.rlwy.net', // Use o host público
-    user: process.env.MYSQL_USER || 'root',                  // Nome de usuário
-    password: process.env.MYSQL_PASSWORD || 'bOFQusubmqGomYrgpFNOdjjoWtoLIoGW', // Senha
-    database: process.env.MYSQL_DATABASE || 'railway',       // Nome do banco de dados
-    port: process.env.MYSQL_PORT || 52578                     // Porta do banco de dados
+    host: process.env.MYSQL_HOST || 'autorack.proxy.rlwy.net', 
+    user: process.env.MYSQL_USER || 'root',               
+    password: process.env.MYSQL_PASSWORD || 'bOFQusubmqGomYrgpFNOdjjoWtoLIoGW', 
+    database: process.env.MYSQL_DATABASE || 'railway',       
+    port: process.env.MYSQL_PORT || 52578                    
 });
 
 // Testando a conexão
-connection.connect(err => {
+mysqli.connect(err => {
     if (err) {
         console.error('Erro ao conectar ao MySQL:', err.stack);
         return;
     }
-    console.log('Conectado ao MySQL como ID ' + connection.threadId);
+    console.log('Conectado ao MySQL como ID ' + mysqli.threadId);
 });
 
 
